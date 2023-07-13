@@ -1,0 +1,28 @@
+type Tree {
+  id: ID @id
+  name: String @unique
+  branches: [Branch!]! @relationship(type: "HAS_BRANCHES", direction: OUT)
+}
+
+type Scale {
+  id: ID @id
+  min: Int!
+  max: Int!
+  value: Int!
+  defaultValue: Int!
+}
+
+type Branch {
+  id: ID @id
+  name: String! @unique
+  leaves: [Leaf!]! @relationship(type: "HAS_LEAVES", direction: OUT)
+  branches: [Branch!]! @relationship(type: "HAS_BRANCHES", direction: OUT)
+}
+
+type Leaf {
+  id: ID @id
+  name: String! @unique
+  type: [Scale!]! @relationship(type: "HAS_LEAVES", direction: OUT)
+  branches: [Branch!]! @relationship(type: "HAS_BRANCHES", direction: OUT)
+}
+

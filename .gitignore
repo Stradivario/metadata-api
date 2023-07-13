@@ -1,0 +1,10 @@
+.gcache
+node_modules
+dist
+.cache
+
+.env
+.env.production
+
+index.js
+index.js.map
