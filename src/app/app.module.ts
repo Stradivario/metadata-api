@@ -13,7 +13,7 @@ export const ToUpperCaseDirective = new GraphQLCustomDirective<string>({
   locations: [DirectiveLocation.FIELD],
   resolve: async (resolve) => {
     const value = (await resolve());
-    return value.toLowerCase()
+    return value.toUpperCase()
   },
 });
 
@@ -53,7 +53,7 @@ export const ToUpperCaseDirective = new GraphQLCustomDirective<string>({
       username: ENVIRONMENT.NEO4J_USERNAME,
       password: ENVIRONMENT.NEO4J_PASSWORD,
       address: ENVIRONMENT.NEO4J_URI,
-      schema: Promise.resolve(print(schema))
+      schema: Promise.resolve(print(schema)),
     }),
     VoyagerModule.forRoot(),
   ],

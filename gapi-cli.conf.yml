@@ -1,0 +1,8 @@
+config:
+  schema:
+    introspectionEndpoint: http://localhost:9000/graphql
+    introspectionOutputFolder: ./src/app/core/api-introspection
+    headers: 'Authorization: bearer'
+  schematics:
+    name: '@gapi/schematics'
+    dryRun: false

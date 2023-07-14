@@ -1,28 +1,44 @@
 type Tree {
   id: ID @id
   name: String @unique
-  branches: [Branch!]! @relationship(type: "HAS_BRANCHES", direction: OUT)
+  branches: [Branch!]! @relationship(type: "HAS_BRANCH", direction: OUT)
 }
 
-type Scale {
+interface Value {
+  value: Int @default(value: 50)
+}
+
+type Scale implements Value {
   id: ID @id
   min: Int!
   max: Int!
-  value: Int!
-  defaultValue: Int!
+  value: Int
 }
+
+type Number implements Value {
+  id: ID @id
+  value: Int
+}
+
+type Text {
+  id: ID @id
+  value: String
+}
+
+union LeafDataTypeUnion = Scale | Number | Text
 
 type Branch {
   id: ID @id
   name: String! @unique
-  leaves: [Leaf!]! @relationship(type: "HAS_LEAVES", direction: OUT)
-  branches: [Branch!]! @relationship(type: "HAS_BRANCHES", direction: OUT)
+  leaves: [Leaf!]! @relationship(type: "HAS_LEAF", direction: OUT)
+  branches: [Branch!]! @relationship(type: "HAS_BRANCH", direction: OUT)
 }
 
 type Leaf {
   id: ID @id
   name: String! @unique
-  type: [Scale!]! @relationship(type: "HAS_LEAVES", direction: OUT)
-  branches: [Branch!]! @relationship(type: "HAS_BRANCHES", direction: OUT)
+  type: LeafDataTypeUnion! @relationship(type: "HAS_VALUE_OF_TYPE", direction: OUT)
+  parentBranch: Branch! @relationship(type: "IS_LEAF_ON_BRANCH", direction: OUT)
+  # siblings: [Leaf!]! @relationship(type: "HAS_SIBLING", direction: OUT)
 }
 
