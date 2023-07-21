@@ -26,7 +26,6 @@
       "es6",
       "dom",
       "esnext.asynciterable",
-      "es2021"
     ],
     "typeRoots": [
       "node_modules/@types"
