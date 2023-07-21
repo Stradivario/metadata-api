@@ -481,21 +481,3 @@ mutation updateLeaves {
 ```
 
 
-
-
-
-## Deploy Graphql Lambda
-
-### Login to graphql-server cli
-
-1. Go to https://graphql-server.com/profile/settings/identity/cli
-2. Click Generate CLI Token button
-3. Copy the generated command
-4. Install `npm i -g @gapi/gcli`
-5. Execute the command from step 3
-6. Go to https://graphql-server.com/projects/60fc997063ce4f0031eeb5e9/lambdas
-7. On the top right corner you will find button called `CONNECT CLI` click it
-8. Copy the command provided in the dialog
-9. Execute it inside the terminal `gcli project:use 60fc997063ce4f0031eeb5e9`
-10. Get selected lambda for fidex `gcli lambda:get`
-11. To update the lambda execute `gcli lambda:update`

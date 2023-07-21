@@ -9,6 +9,10 @@
     "@gapi/voyager": "^1.8.131",
     "@rxdi/neo4j": "^0.7.156"
   },
+  "engines": {
+    "npm": "^9.4.0",
+    "node": "^14.21.2"
+  },
   "devDependencies": {
     "@types/node": "^16.11.63",
     "@babel/core": "^7.10.2",
